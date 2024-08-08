@@ -7,3 +7,14 @@ Joann Vuong <130@holbertonschool.com>
 
 Patrick Odhiambo <patty6339@gmail.com>
 Steve Murimi <murimi101@gmail.com>
+
+The following new features and improvements have been added to the project:
+
+- **Selector**: Methods to select and manipulate HTML elements using various selectors.
+- **Get and set content**: Functions to retrieve and update the content of HTML elements.
+- **Manipulate CSS classes**: Utilities to add, remove, and toggle CSS classes on HTML elements.
+- **Manipulate DOM elements**: Functions to create, remove, and modify HTML elements in the DOM.
+- **Document ready**: Ensures that the DOM is fully loaded before executing JavaScript code.
+- **Introduction**: Added introductory documentation and examples for new users.
+- **GET & POST request**: Methods to perform asynchronous HTTP GET and POST requests.
+- **HTTP access control (CORS)**: Implemented Cross-Origin Resource Sharing (CORS) to allow secure communication between different domains.
