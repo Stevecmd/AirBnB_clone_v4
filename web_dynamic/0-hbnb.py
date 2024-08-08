@@ -2,7 +2,8 @@
 """ Starts a Flash Web Application """
 from os import environ
 
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
 
 from models import storage
 from models.amenity import Amenity
