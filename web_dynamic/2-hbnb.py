@@ -48,7 +48,7 @@ def hbnb():
 
 
 @app.route('/0-hbnb', strict_slashes=False)
-def zero_hbnb():
+def hbnb_0():
     """ HBNB is alive! """
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
@@ -63,16 +63,60 @@ def zero_hbnb():
     places = storage.all(Place).values()
     places = sorted(places, key=lambda k: k.name)
 
-    try:
-        return render_template('100-hbnb.html',
-                               states=st_ct,
-                               amenities=amenities,
-                               places=places,
-                               cache_id=uuid.uuid4()
-                               )
-    except TemplateNotFound:
-        app.logger.error("Template '100-hbnb.html' not found.")
-        return "Template not found", 404
+    return render_template('0-hbnb.html',
+                           states=st_ct,
+                           amenities=amenities,
+                           places=places,
+                           cache_id=uuid.uuid4()
+                           )
+
+
+@app.route('/1-hbnb', strict_slashes=False)
+def hbnb_1():
+    """ HBNB is alive! """
+    states = storage.all(State).values()
+    states = sorted(states, key=lambda k: k.name)
+    st_ct = []
+
+    for state in states:
+        st_ct.append([state, sorted(state.cities, key=lambda k: k.name)])
+
+    amenities = storage.all(Amenity).values()
+    amenities = sorted(amenities, key=lambda k: k.name)
+
+    places = storage.all(Place).values()
+    places = sorted(places, key=lambda k: k.name)
+
+    return render_template('1-hbnb.html',
+                           states=st_ct,
+                           amenities=amenities,
+                           places=places,
+                           cache_id=uuid.uuid4()
+                           )
+
+
+@app.route('/2-hbnb', strict_slashes=False)
+def hbnb_2():
+    """ HBNB is alive! """
+    states = storage.all(State).values()
+    states = sorted(states, key=lambda k: k.name)
+    st_ct = []
+
+    for state in states:
+        st_ct.append([state, sorted(state.cities, key=lambda k: k.name)])
+
+    amenities = storage.all(Amenity).values()
+    amenities = sorted(amenities, key=lambda k: k.name)
+
+    places = storage.all(Place).values()
+    places = sorted(places, key=lambda k: k.name)
+
+    return render_template('2-hbnb.html',
+                           states=st_ct,
+                           amenities=amenities,
+                           places=places,
+                           cache_id=uuid.uuid4()
+                           )
 
 
 if __name__ == "__main__":
