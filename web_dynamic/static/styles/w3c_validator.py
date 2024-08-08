@@ -111,7 +111,6 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         __print_stderr("usage: w3c_validator.py file1 file2 ...\n")
         exit(1)
-
     """execute tests, then exit. Exit status = # of errors (0 on success)
     """
     sys.exit(__files_loop())
