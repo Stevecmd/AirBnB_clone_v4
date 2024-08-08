@@ -26,7 +26,7 @@ app.logger.setLevel(logging.DEBUG)
 def close_db(error):
     """Remove the current SQLAlchemy Session
 
-    :param error: 
+    :param error:
 
     """
     storage.close()
