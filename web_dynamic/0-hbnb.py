@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 """ Starts a Flash Web Application """
-from models import storage
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.place import Place
 from os import environ
-from flask import Flask, render_template
+
+from flask import Flask
+from flask import render_template
+
+from models import storage
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.state import State
+
 app = Flask(__name__)
 # app.jinja_env.trim_blocks = True
 # app.jinja_env.lstrip_blocks = True
@@ -14,19 +18,23 @@ app = Flask(__name__)
 
 @app.teardown_appcontext
 def close_db(error):
-    """ Remove the current SQLAlchemy Session """
+    """Remove the current SQLAlchemy Session
+
+    :param error:
+
+    """
     storage.close()
 
 
-@app.route('/', strict_slashes=False)
+@app.route("/", strict_slashes=False)
 def index():
-    """ Redirect to /hbnb """
+    """Redirect to /hbnb"""
     return hbnb()
 
 
-@app.route('/hbnb', strict_slashes=False)
+@app.route("/hbnb", strict_slashes=False)
 def hbnb():
-    """ HBNB is alive! """
+    """HBNB is alive!"""
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
     st_ct = []
@@ -40,12 +48,12 @@ def hbnb():
     places = storage.all(Place).values()
     places = sorted(places, key=lambda k: k.name)
 
-    return render_template('100-hbnb.html',
+    return render_template("100-hbnb.html",
                            states=st_ct,
                            amenities=amenities,
                            places=places)
 
 
 if __name__ == "__main__":
-    """ Main Function """
-    app.run(host='0.0.0.0', port=5000)
+    """Main Function"""
+    app.run(host="0.0.0.0", port=5000)
