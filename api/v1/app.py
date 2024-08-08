@@ -4,7 +4,10 @@ from os import environ
 
 from flasgger import Swagger
 from flasgger.utils import swag_from
-from flask import Flask, jsonify, make_response, render_template
+from flask import Flask
+from flask import jsonify
+from flask import make_response
+from flask import render_template
 from flask_cors import CORS
 
 from api.v1.views import app_views

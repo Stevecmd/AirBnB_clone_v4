@@ -2,7 +2,6 @@
 """
 Contains the FileStorage class
 """
-
 import json
 from hashlib import md5
 

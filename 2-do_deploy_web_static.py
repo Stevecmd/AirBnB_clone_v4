@@ -3,10 +3,11 @@
 Fabric script based on the file 1-pack_web_static.py that distributes an
 archive to the web servers
 """
-
 from os.path import exists
 
-from fabric.api import env, put, run
+from fabric.api import env
+from fabric.api import put
+from fabric.api import run
 
 env.hosts = ["142.44.167.228", "144.217.246.195"]
 

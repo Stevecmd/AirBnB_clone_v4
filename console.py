@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ console """
-
 import cmd
 import shlex  # for splitting the line along spaces except in double quotes
 from datetime import datetime
