@@ -4,7 +4,9 @@ import logging
 import uuid
 from os import environ
 
-from flask import Flask, redirect, render_template
+from flask import Flask
+from flask import redirect
+from flask import render_template
 from jinja2 import TemplateNotFound
 
 from models import storage
