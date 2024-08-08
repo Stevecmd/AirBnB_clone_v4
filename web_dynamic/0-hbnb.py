@@ -10,6 +10,7 @@ from flask import Flask, render_template, redirect
 import logging
 import uuid
 from jinja2 import TemplateNotFound
+
 app = Flask(__name__)
 # app = Flask(__name__, template_folder='web_flask/templates/')
 app.logger.setLevel(logging.DEBUG)
@@ -19,13 +20,13 @@ app.logger.setLevel(logging.DEBUG)
 
 @app.teardown_appcontext
 def close_db(error):
-    """ Remove the current SQLAlchemy Session """
+    """Remove the current SQLAlchemy Session"""
     storage.close()
 
 
-@app.route('/hbnb', strict_slashes=False)
+@app.route("/hbnb", strict_slashes=False)
 def hbnb():
-    """ HBNB is alive! """
+    """HBNB is alive!"""
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
     st_ct = []
@@ -39,17 +40,18 @@ def hbnb():
     places = storage.all(Place).values()
     places = sorted(places, key=lambda k: k.name)
 
-    return render_template('0-hbnb.html',
-                           states=st_ct,
-                           amenities=amenities,
-                           places=places,
-                           cache_id=uuid.uuid4()
-                           )
+    return render_template(
+        "0-hbnb.html",
+        states=st_ct,
+        amenities=amenities,
+        places=places,
+        cache_id=uuid.uuid4(),
+    )
 
 
-@app.route('/0-hbnb', strict_slashes=False)
+@app.route("/0-hbnb", strict_slashes=False)
 def zero_hbnb():
-    """ HBNB is alive! """
+    """HBNB is alive!"""
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
     st_ct = []
@@ -64,17 +66,18 @@ def zero_hbnb():
     places = sorted(places, key=lambda k: k.name)
 
     try:
-        return render_template('100-hbnb.html',
-                               states=st_ct,
-                               amenities=amenities,
-                               places=places,
-                               cache_id=uuid.uuid4()
-                               )
+        return render_template(
+            "100-hbnb.html",
+            states=st_ct,
+            amenities=amenities,
+            places=places,
+            cache_id=uuid.uuid4(),
+        )
     except TemplateNotFound:
         app.logger.error("Template '100-hbnb.html' not found.")
         return "Template not found", 404
 
 
 if __name__ == "__main__":
-    """ Main Function """
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    """Main Function"""
+    app.run(host="0.0.0.0", port=5000, debug=True)
