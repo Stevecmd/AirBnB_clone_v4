@@ -24,7 +24,9 @@ class TestBaseModelDocs(unittest.TestCase):
 
     def test_pep8_conformance(self):
         """Test that models/base_model.py conforms to PEP8."""
-        for path in ["models/base_model.py", "tests/test_models/test_base_model.py"]:
+        for path in [
+                "models/base_model.py", "tests/test_models/test_base_model.py"
+        ]:
             with self.subTest(path=path):
                 errors = pycodestyle.Checker(path).check_all()
                 self.assertEqual(errors, 0)
@@ -36,10 +38,10 @@ class TestBaseModelDocs(unittest.TestCase):
 
     def test_class_docstring(self):
         """Test for the BaseModel class docstring"""
-        self.assertIsNot(BaseModel.__doc__, None, "BaseModel class needs a docstring")
+        self.assertIsNot(BaseModel.__doc__, None,
+                         "BaseModel class needs a docstring")
         self.assertTrue(
-            len(BaseModel.__doc__) >= 1, "BaseModel class needs a docstring"
-        )
+            len(BaseModel.__doc__) >= 1, "BaseModel class needs a docstring")
 
     def test_func_docstrings(self):
         """Test for the presence of docstrings in BaseModel methods"""
@@ -100,7 +102,8 @@ class TestBaseModel(unittest.TestCase):
         toc = datetime.utcnow()
         self.assertTrue(
             tic <= inst2.created_at <= toc,
-            f"inst2.created_at {inst2.created_at} " f"not in range {tic} - {toc}",
+            f"inst2.created_at {inst2.created_at} "
+            f"not in range {tic} - {toc}",
         )
         self.assertEqual(inst1.created_at, inst1.updated_at)
         self.assertEqual(inst2.created_at, inst2.updated_at)
