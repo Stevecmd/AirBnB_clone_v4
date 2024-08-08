@@ -21,7 +21,7 @@ def hbnb():
 def c_is_fun(text):
     """Prints a Message when /c is called
 
-    :param text: 
+    :param text:
 
     """
     return "C " + text.replace("_", " ")

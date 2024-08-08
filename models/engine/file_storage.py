@@ -50,7 +50,7 @@ class FileStorage:
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id
 
-        :param obj: 
+        :param obj:
 
         """
         if obj is not None:
@@ -96,7 +96,7 @@ class FileStorage:
         """Returns the object based on the class name and its ID, or
         None if not found
 
-        :param id: 
+        :param id:
 
         """
         if cls not in classes.values():

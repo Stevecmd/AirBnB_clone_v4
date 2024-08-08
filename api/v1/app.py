@@ -23,7 +23,7 @@ cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 def close_db(error):
     """Close Storage
 
-    :param error: 
+    :param error:
 
     """
     storage.close()
@@ -37,7 +37,7 @@ def not_found(error):
       404:
         description: a resource was not found
 
-    :param error: 
+    :param error:
 
     """
     return make_response(jsonify({"error": "Not found"}), 404)

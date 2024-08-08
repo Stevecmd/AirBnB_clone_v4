@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """Exits console
 
-        :param arg: 
+        :param arg:
 
         """
         return True
@@ -44,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, arg):
         """Quit command to exit the program
 
-        :param arg: 
+        :param arg:
 
         """
         return True
@@ -52,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
     def _key_value_parser(self, args):
         """creates a dictionary from a list of strings
 
-        :param args: 
+        :param args:
 
         """
         new_dict = {}
@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         """Creates a new instance of a class
 
-        :param arg: 
+        :param arg:
 
         """
         args = arg.split()
@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """Prints an instance as a string based on the class and id
 
-        :param arg: 
+        :param arg:
 
         """
         args = shlex.split(arg)
@@ -118,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """Deletes an instance based on the class and id
 
-        :param arg: 
+        :param arg:
 
         """
         args = shlex.split(arg)
@@ -140,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints string representations of instances
 
-        :param arg: 
+        :param arg:
 
         """
         args = shlex.split(arg)
@@ -161,7 +161,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Update an instance based on the class name, id, attribute & value
 
-        :param arg: 
+        :param arg:
 
         """
         args = shlex.split(arg)

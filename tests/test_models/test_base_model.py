@@ -164,7 +164,7 @@ class TestBaseModel(unittest.TestCase):
         """Test that save method updates `updated_at` and calls
         `storage.save`
 
-        :param mock_storage: 
+        :param mock_storage:
 
         """
         inst = BaseModel()
