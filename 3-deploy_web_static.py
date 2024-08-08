@@ -26,7 +26,11 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """distributes an archive to the web servers"""
+    """distributes an archive to the web servers
+
+    :param archive_path: 
+
+    """
     if exists(archive_path) is False:
         return False
     try:

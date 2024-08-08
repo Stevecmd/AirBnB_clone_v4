@@ -35,7 +35,11 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
-        """returns the dictionary __objects"""
+        """returns the dictionary __objects
+
+        :param cls:  (Default value = None)
+
+        """
         if cls is not None:
             new_dict = {}
             for key, value in self.__objects.items():
@@ -45,7 +49,11 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key <obj class name>.id"""
+        """sets in __objects the obj with key <obj class name>.id
+
+        :param obj: 
+
+        """
         if obj is not None:
             key = obj.__class__.__name__ + "." + obj.id
             self.__objects[key] = obj
@@ -71,7 +79,11 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        """delete obj from __objects if it’s inside"""
+        """delete obj from __objects if it’s inside
+
+        :param obj:  (Default value = None)
+
+        """
         if obj is not None:
             key = obj.__class__.__name__ + "." + obj.id
             if key in self.__objects:
@@ -82,9 +94,11 @@ class FileStorage:
         self.reload()
 
     def get(self, cls, id):
-        """
-        Returns the object based on the class name and its ID, or
+        """Returns the object based on the class name and its ID, or
         None if not found
+
+        :param id: 
+
         """
         if cls not in classes.values():
             return None
@@ -97,8 +111,10 @@ class FileStorage:
         return None
 
     def count(self, cls=None):
-        """
-        count the number of objects in storage
+        """count the number of objects in storage
+
+        :param cls:  (Default value = None)
+
         """
         all_class = classes.values()
 

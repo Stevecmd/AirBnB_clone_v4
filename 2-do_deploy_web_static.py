@@ -12,7 +12,11 @@ env.hosts = ["142.44.167.228", "144.217.246.195"]
 
 
 def do_deploy(archive_path):
-    """distributes an archive to the web servers"""
+    """distributes an archive to the web servers
+
+    :param archive_path: 
+
+    """
     if exists(archive_path) is False:
         return False
     try:
