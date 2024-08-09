@@ -1,9 +1,9 @@
 /* global $ */
 
-$(document).ready(function () {
+$(document).ready(function() {
   const selectedAmenities = {};
 
-  $('input[type="checkbox"]').change(function () {
+  $('input[type="checkbox"]').change(function() {
     const amenityId = $(this).attr('data-id');
     const amenityName = $(this).attr('data-name');
 
