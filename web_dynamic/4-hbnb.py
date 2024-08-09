@@ -4,16 +4,13 @@ from models import storage
 app = Flask(__name__)
 
 
-@app.route('/4-hbnb', strict_slashes=False)
+@app.route("/4-hbnb", strict_slashes=False)
 def hbnb():
     states = storage.all("State").values()
     amenities = storage.all("Amenity").values()
     places = storage.all("Place").values()
     return render_template(
-        '4-hbnb.html',
-        states=states,
-        amenities=amenities,
-        places=places
+        "4-hbnb.html", states=states, amenities=amenities, places=places
     )
 
 
@@ -23,4 +20,4 @@ def teardown_db(exception):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port=5000)
