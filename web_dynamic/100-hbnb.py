@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route("/100-hbnb", strict_slashes=False)
 def hbnb():
+    """ """
     states = storage.all("State").values()
     amenities = storage.all("Amenity").values()
     places = storage.all("Place").values()
@@ -17,6 +18,11 @@ def hbnb():
 
 @app.teardown_appcontext
 def teardown_db(exception):
+    """
+
+    :param exception: 
+
+    """
     storage.close()
 
 
