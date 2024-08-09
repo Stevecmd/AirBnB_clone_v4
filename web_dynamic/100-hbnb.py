@@ -21,7 +21,7 @@ def hbnb():
 def teardown_db(exception):
     """
 
-    :param exception: 
+    :param exception:
 
     """
     storage.close()
