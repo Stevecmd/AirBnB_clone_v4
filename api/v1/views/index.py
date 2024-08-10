@@ -8,7 +8,7 @@ from models.state import State
 from models.user import User
 from models import storage
 from api.v1.views import app_views
-from flask import jsonify
+from flask import jsonify, request
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
@@ -28,6 +28,7 @@ def number_objects():
         num_objs[names[i]] = storage.count(classes[i])
 
     return jsonify(num_objs)
+
 
 @app_views.route('/places_search/', methods=['POST'], strict_slashes=False)
 def search_places():
@@ -73,7 +74,8 @@ def search_places():
     places = []
     for place in list_places:
         place_dict = place.to_dict()
-        place_dict.pop('amenities', None)
+        user = storage.get(User, place.user_id)
+        place_dict['user'] = user.to_dict()
         places.append(place_dict)
 
     return jsonify(places)

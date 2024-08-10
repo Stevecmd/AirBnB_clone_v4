@@ -2,6 +2,7 @@
 """ holds class Place"""
 import models
 from models.base_model import BaseModel, Base
+from models.amenity import Amenity
 from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
@@ -57,6 +58,22 @@ class Place(BaseModel, Base):
         """initializes Place"""
         super().__init__(*args, **kwargs)
 
+    def to_dict(self):
+        """Returns a dictionary representation of the Place instance"""
+        dict_rep = super().to_dict()
+        dict_rep.update({
+            'name': self.name,
+            'description': self.description,
+            'number_rooms': self.number_rooms,
+            'number_bathrooms': self.number_bathrooms,
+            'max_guest': self.max_guest,
+            'price_by_night': self.price_by_night,
+            'latitude': self.latitude,
+            'longitude': self.longitude,
+            'amenities': [amenity.to_dict() for amenity in self.amenities]
+        })
+        return dict_rep
+
     if models.storage_t != 'db':
         @property
         def reviews(self):
@@ -76,6 +93,12 @@ class Place(BaseModel, Base):
             amenity_list = []
             all_amenities = models.storage.all(Amenity)
             for amenity in all_amenities.values():
-                if amenity.place_id == self.id:
+                if amenity.id in self.amenity_ids:
                     amenity_list.append(amenity)
             return amenity_list
+
+        @amenities.setter
+        def amenities(self, obj):
+            """setter attribute appends an Amenity id to amenity_ids"""
+            if isinstance(obj, Amenity):
+                self.amenity_ids.append(obj.id)
