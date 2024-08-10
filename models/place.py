@@ -1,12 +1,14 @@
 #!/usr/bin/python
 """ holds class Place"""
-import models
-from models.base_model import BaseModel, Base
-from models.amenity import Amenity
 from os import getenv
+
 import sqlalchemy
-from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
+from sqlalchemy import Column, Float, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import relationship
+
+import models
+from models.amenity import Amenity
+from models.base_model import Base, BaseModel
 
 if models.storage_t == "db":
     place_amenity = Table(
