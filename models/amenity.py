@@ -3,11 +3,13 @@
 from os import getenv
 
 import sqlalchemy
-from sqlalchemy import Column, String
+from sqlalchemy import Column
+from sqlalchemy import String
 from sqlalchemy.orm import relationship
 
 import models
-from models.base_model import Base, BaseModel
+from models.base_model import Base
+from models.base_model import BaseModel
 
 
 class Amenity(BaseModel, Base):

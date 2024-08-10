@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """ objects that handle all default RestFul API actions for Places """
 from flasgger.utils import swag_from
-from flask import abort, jsonify, make_response, request
+from flask import abort
+from flask import jsonify
+from flask import make_response
+from flask import request
 
 from api.v1.views import app_views
 from models import storage
