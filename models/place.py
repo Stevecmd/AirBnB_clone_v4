@@ -112,6 +112,10 @@ class Place(BaseModel, Base):
 
         @amenities.setter
         def amenities(self, obj):
-            """setter attribute appends an Amenity id to amenity_ids"""
+            """setter attribute appends an Amenity id to amenity_ids
+
+            :param obj: 
+
+            """
             if isinstance(obj, Amenity):
                 self.amenity_ids.append(obj.id)

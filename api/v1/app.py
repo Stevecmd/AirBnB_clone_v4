@@ -18,7 +18,11 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.teardown_appcontext
 def close_db(error):
-    """Close Storage"""
+    """Close Storage
+
+    :param error: 
+
+    """
     storage.close()
 
 
@@ -29,6 +33,9 @@ def not_found(error):
     responses:
       404:
         description: a resource was not found
+
+    :param error: 
+
     """
     return make_response(jsonify({"error": "Not found"}), 404)
 

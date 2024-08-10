@@ -15,8 +15,10 @@ from models.user import User
 @app_views.route("/cities/<city_id>/places", methods=["GET"], strict_slashes=False)
 @swag_from("documentation/place/get_places.yml", methods=["GET"])
 def get_places(city_id):
-    """
-    Retrieves the list of all Place objects of a City
+    """Retrieves the list of all Place objects of a City
+
+    :param city_id: 
+
     """
     city = storage.get(City, city_id)
 
@@ -31,8 +33,10 @@ def get_places(city_id):
 @app_views.route("/places/<place_id>", methods=["GET"], strict_slashes=False)
 @swag_from("documentation/place/get_place.yml", methods=["GET"])
 def get_place(place_id):
-    """
-    Retrieves a Place object
+    """Retrieves a Place object
+
+    :param place_id: 
+
     """
     place = storage.get(Place, place_id)
     if not place:
@@ -44,8 +48,10 @@ def get_place(place_id):
 @app_views.route("/places/<place_id>", methods=["DELETE"], strict_slashes=False)
 @swag_from("documentation/place/delete_place.yml", methods=["DELETE"])
 def delete_place(place_id):
-    """
-    Deletes a Place Object
+    """Deletes a Place Object
+
+    :param place_id: 
+
     """
 
     place = storage.get(Place, place_id)
@@ -62,8 +68,10 @@ def delete_place(place_id):
 @app_views.route("/cities/<city_id>/places", methods=["POST"], strict_slashes=False)
 @swag_from("documentation/place/post_place.yml", methods=["POST"])
 def post_place(city_id):
-    """
-    Creates a Place
+    """Creates a Place
+
+    :param city_id: 
+
     """
     city = storage.get(City, city_id)
 
@@ -94,8 +102,10 @@ def post_place(city_id):
 @app_views.route("/places/<place_id>", methods=["PUT"], strict_slashes=False)
 @swag_from("documentation/place/put_place.yml", methods=["PUT"])
 def put_place(place_id):
-    """
-    Updates a Place
+    """Updates a Place
+
+    :param place_id: 
+
     """
     place = storage.get(Place, place_id)
 
@@ -118,9 +128,10 @@ def put_place(place_id):
 @app_views.route("/places_search", methods=["POST"], strict_slashes=False)
 @swag_from("documentation/place/post_search.yml", methods=["POST"])
 def places_search():
-    """
-    Retrieves all Place objects depending on the JSON in the body
+    """Retrieves all Place objects depending on the JSON in the body
     of the request
+
+
     """
 
     if request.get_json() is None:
