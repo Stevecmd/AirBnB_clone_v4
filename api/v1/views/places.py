@@ -20,7 +20,7 @@ from models.user import User
 def get_places(city_id):
     """Retrieves the list of all Place objects of a City
 
-    :param city_id: 
+    :param city_id:
 
     """
     city = storage.get(City, city_id)
@@ -38,7 +38,7 @@ def get_places(city_id):
 def get_place(place_id):
     """Retrieves a Place object
 
-    :param place_id: 
+    :param place_id:
 
     """
     place = storage.get(Place, place_id)
@@ -53,7 +53,7 @@ def get_place(place_id):
 def delete_place(place_id):
     """Deletes a Place Object
 
-    :param place_id: 
+    :param place_id:
 
     """
 
@@ -73,7 +73,7 @@ def delete_place(place_id):
 def post_place(city_id):
     """Creates a Place
 
-    :param city_id: 
+    :param city_id:
 
     """
     city = storage.get(City, city_id)
@@ -107,7 +107,7 @@ def post_place(city_id):
 def put_place(place_id):
     """Updates a Place
 
-    :param place_id: 
+    :param place_id:
 
     """
     place = storage.get(Place, place_id)

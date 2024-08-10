@@ -120,7 +120,7 @@ class Place(BaseModel, Base):
         def amenities(self, obj):
             """setter attribute appends an Amenity id to amenity_ids
 
-            :param obj: 
+            :param obj:
 
             """
             if isinstance(obj, Amenity):
