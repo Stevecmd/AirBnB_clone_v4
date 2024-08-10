@@ -71,8 +71,7 @@ def search_places():
             list_places = storage.all(Place).values()
         amenities_obj = [storage.get(Amenity, a_id) for a_id in amenities]
         list_places = [
-            place
-            for place in list_places
+            place for place in list_places
             if all([am in place.amenities for am in amenities_obj])
         ]
 

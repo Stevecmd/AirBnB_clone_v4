@@ -51,10 +51,12 @@ class Place(BaseModel, Base):
         price_by_night = Column(Integer, nullable=False, default=0)
         latitude = Column(Float, nullable=True)
         longitude = Column(Float, nullable=True)
-        reviews = relationship(
-            "Review", backref="place", cascade="all, delete, delete-orphan"
-        )
-        amenities = relationship("Amenity", secondary=place_amenity, viewonly=False)
+        reviews = relationship("Review",
+                               backref="place",
+                               cascade="all, delete, delete-orphan")
+        amenities = relationship("Amenity",
+                                 secondary=place_amenity,
+                                 viewonly=False)
     else:
         city_id = ""
         user_id = ""
@@ -75,19 +77,25 @@ class Place(BaseModel, Base):
     def to_dict(self):
         """Returns a dictionary representation of the Place instance"""
         dict_rep = super().to_dict()
-        dict_rep.update(
-            {
-                "name": self.name,
-                "description": self.description,
-                "number_rooms": self.number_rooms,
-                "number_bathrooms": self.number_bathrooms,
-                "max_guest": self.max_guest,
-                "price_by_night": self.price_by_night,
-                "latitude": self.latitude,
-                "longitude": self.longitude,
-                "amenities": [amenity.to_dict() for amenity in self.amenities],
-            }
-        )
+        dict_rep.update({
+            "name":
+            self.name,
+            "description":
+            self.description,
+            "number_rooms":
+            self.number_rooms,
+            "number_bathrooms":
+            self.number_bathrooms,
+            "max_guest":
+            self.max_guest,
+            "price_by_night":
+            self.price_by_night,
+            "latitude":
+            self.latitude,
+            "longitude":
+            self.longitude,
+            "amenities": [amenity.to_dict() for amenity in self.amenities],
+        })
         return dict_rep
 
     if models.storage_t != "db":
