@@ -121,7 +121,7 @@ def put_place(place_id):
 @swag_from('documentation/place/post_search.yml', methods=['POST'])
 def places_search():
     """
-    Retrieves all Place objects depending of the JSON in the body
+    Retrieves all Place objects depending on the JSON in the body
     of the request
     """
 
@@ -174,7 +174,7 @@ def places_search():
     places = []
     for p in list_places:
         d = p.to_dict()
-        d.pop('amenities', None)
+        d.pop('amenities', None)  # Remove amenities if not needed
         places.append(d)
 
     return jsonify(places)
