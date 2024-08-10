@@ -11,15 +11,15 @@ from api.v1.views import app_views
 from flask import jsonify, request
 
 
-@app_views.route('/status', methods=['GET'], strict_slashes=False)
+@app_views.route("/status", methods=["GET"], strict_slashes=False)
 def status():
-    """ Status of API """
+    """Status of API"""
     return jsonify({"status": "OK"})
 
 
-@app_views.route('/stats', methods=['GET'], strict_slashes=False)
+@app_views.route("/stats", methods=["GET"], strict_slashes=False)
 def number_objects():
-    """ Retrieves the number of each objects by type """
+    """Retrieves the number of each objects by type"""
     classes = [Amenity, City, Place, Review, State, User]
     names = ["amenities", "cities", "places", "reviews", "states", "users"]
 
@@ -30,7 +30,7 @@ def number_objects():
     return jsonify(num_objs)
 
 
-@app_views.route('/places_search/', methods=['POST'], strict_slashes=False)
+@app_views.route("/places_search/", methods=["POST"], strict_slashes=False)
 def search_places():
     """Returns a list of places based on the search criteria"""
     if request.get_json() is None:
@@ -43,9 +43,9 @@ def search_places():
         list_places = [place.to_dict() for place in places]
         return jsonify(list_places)
 
-    states = data.get('states', [])
-    cities = data.get('cities', [])
-    amenities = data.get('amenities', [])
+    states = data.get("states", [])
+    cities = data.get("cities", [])
+    amenities = data.get("amenities", [])
 
     list_places = []
 
@@ -68,14 +68,17 @@ def search_places():
         if not list_places:
             list_places = storage.all(Place).values()
         amenities_obj = [storage.get(Amenity, a_id) for a_id in amenities]
-        list_places = [place for place in list_places
-                       if all([am in place.amenities for am in amenities_obj])]
+        list_places = [
+            place
+            for place in list_places
+            if all([am in place.amenities for am in amenities_obj])
+        ]
 
     places = []
     for place in list_places:
         place_dict = place.to_dict()
         user = storage.get(User, place.user_id)
-        place_dict['user'] = user.to_dict()
+        place_dict["user"] = user.to_dict()
         places.append(place_dict)
 
     return jsonify(places)
