@@ -40,7 +40,8 @@ class Place(BaseModel, Base):
                                cascade="all, delete, delete-orphan")
         amenities = relationship("Amenity",
                                  secondary=place_amenity,
-                                 viewonly=False)
+                                 viewonly=False,
+                                 overlaps="place_amenities")
     else:
         city_id = ""
         user_id = ""
