@@ -23,6 +23,12 @@ def close_db(error):
     storage.close()
 
 
+@app.route('/', strict_slashes=False)
+def index():
+    """ Redirect to /hbnb """
+    return redirect('/hbnb')
+
+
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
     """ HBNB is alive! """
